@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form'
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup'
 import Button from './Button';
-
+import {Link} from 'react-router-dom'
 
 
 const schema=yup.object({
@@ -37,7 +37,7 @@ const Login:React.FC = () => {
 
   return (
     <>
-        <div className='w-full h-screen bg-slate-100   flex  justify-center  sm:h-fit sm:mt-16 sm:items-center'>
+        <div className='w-full h-screen bg-slate-100 mt-20   flex  justify-center  sm:h-fit sm:mt-16 sm:items-center'>
 
             <div className='w-11/12 h-fit bg-white px-2 py-5 text-center rounded-lg md:w-1/3  '>
                 <img src='./assets/logo.png' className=' mx-auto'/>
@@ -50,10 +50,21 @@ const Login:React.FC = () => {
                     <small className=' h-5 text-left text-red-600 pl-4 mt-0 mb-5'>{errors.password?.message}</small> 
 
                     <Button name="Login" color="bg-green-700" font="text-2xl" margin="mx-auto" />
-                    {/* <button type="submit" className='bg-green-700 text-center text-white w-fit mx-auto px-4 py-1 text-2xl rounded hover:bg-green-600 '>Login</button> */}
-                </form>
-                <div className='mt-5 text-blue-300 hover:text-blue-500 cursor-pointer'>
+                   </form>
+
+                <Link to="/resetpw">    
+                <div className='text-xl mt-5 text-blue-400 hover:text-blue-500 cursor-pointer'>
                     forgot password ?
+                </div>
+                </Link>
+
+                <div className='text-md w-8/12 text-center mx-auto mt-5'>
+                    <div className=''>
+                    for support, email to deerwalkfoods@deerwalk.com
+                    </div>
+                    <div className='mt-4'>
+                        DFS v 5.4.3 © 2022
+                    </div>
                 </div>
               {/* <h1>
                   email : {login.email} <br />

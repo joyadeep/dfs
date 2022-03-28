@@ -6,7 +6,7 @@ import Quantity from '../components/Quantity'
 const Menu = () => {
   return (
     <>
-        <div className='w-11/12 h-fit mx-auto '>
+        <div className='w-[97%] h-fit mx-auto sm:w-11/12 '>
             <Categorybtns/>
             <MenuList/>
 

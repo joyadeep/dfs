@@ -5,10 +5,13 @@ interface Buttontype{
     color:string;
     font?:string;
     margin?:string;
+    handleClick?:()=>void;
 }
-const Button:React.FC<Buttontype> = ({name,color,font,margin}) => {
+const Button:React.FC<Buttontype> = ({name,color,font,margin,handleClick}) => {
   return (
-    <button className={`py-1 px-3 w-fit text-white outline-none rounded ${color} ${font} ${margin}`}>{name}</button>
+    <button onClick={handleClick} className={`py-1 px-1 text-sm w-fit text-white outline-none rounded
+    sm:text-2xl sm:px-3
+    ${color} ${font} ${margin}`}>{name}</button>
   )
 }
 

@@ -59,7 +59,7 @@ export default [
         category:"dinner",
         name:"Khana set (veg)",
         image:"assets/foods/khanaset.jpg",
-        availableTime:"11:00 - 2:00",
+        availableTime:"11:00 - 14:00",
         rate:220.42,
         initialQty:50,
         availableQty:40,

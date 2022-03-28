@@ -9,15 +9,15 @@ const Quantity:React.FC = () => {
         }
     }
   return (
-    <div className='flex w-auto   items-center justify-center space-x-1'>
+    <div className='w-full flex sm:w-auto items-center justify-center space-x-0'>
         <MinusIcon onClick={handleMinus} 
-            className='w-6 h-6 text-teal-100 text-3xl  rounded-sm cursor-pointer' 
+            className='w-10 h-7 px-1 sm:w-10 bg-blue-500 sm:h-10   text-3xl  rounded-sm cursor-pointer' 
         />
         <div 
-            className='text-white text-xl  w-7'>{qty}
+            className='text-white text-sm sm:text-xl   w-7 sm:w-10'>{qty}
         </div>
         <PlusIcon onClick={()=>{setQty(qty+1)}} 
-            className='flex w-6 h-6 text-teal-100 text-3xl  rounded-sm cursor-pointer' 
+            className='flex w-10 h-7 px-1 sm:w-10 sm:h-10 bg-blue-500 text-3xl  rounded-sm cursor-pointer' 
         />
 
     </div>
