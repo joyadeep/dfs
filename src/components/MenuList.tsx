@@ -1,8 +1,16 @@
 import React from 'react'
 import Quantity from './Quantity'
-import foods from '../api/fooditem';
 import Button from './Button';
+import {useSelector,useDispatch} from 'react-redux'
+import { RootState } from '../app/store';
+
+
+
 const MenuList:React.FC = () => {
+
+  const foodlist=useSelector((state:RootState)=>state.foodlist.foodlist);
+  // const dispatch=useDispatch();
+  
   return (
     <>
         <div className='w-full h-fit pb-7'>
@@ -22,11 +30,14 @@ const MenuList:React.FC = () => {
           </thead>
           <tbody className='text-xl text-white'>
 
-
+{
+  console.log(foodlist)
+  
+}
 
 
             {
-              foods.map((item)=>{
+              foodlist.map((item)=>{
                 return(
                   <tr className='text-xs sm:text-xl even:bg-slate-400 odd:bg-slate-500 cursor-pointer transition-all duration-200' key={item.id}>
                   <td className='border py-2 pl-1 sm:pl-4 text-left sm:w-60'>{item.name}</td>

@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const About = () => {
+  useEffect(()=>{
+    console.log("about page visited")
+  },[])
   return (
-    <div>About</div>
+    <div className='text-3xl'>About</div>
   )
 }
 
