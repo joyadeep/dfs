@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Quantity from './Quantity'
 import Button from './Button';
 import {useSelector,useDispatch} from 'react-redux'
@@ -10,6 +10,7 @@ const MenuList:React.FC = () => {
 
   const foodlist=useSelector((state:RootState)=>state.foodlist.foodlist);
   // const dispatch=useDispatch();
+  const [price,setPrice]=useState<number>(0);
   
   return (
     <>
@@ -47,7 +48,7 @@ const MenuList:React.FC = () => {
                   <td className='border pl-1 sm:pl-4'> {item.initialQty}</td>
                   <td className='border pl-1 sm:px-4'>{item.availableQty}</td>
                   <td className='border text-center'><Quantity/></td>
-                  <td className='border pl-2 sm:pl-4'>{item.price}</td>
+                  <td className='border pl-2 sm:pl-4'>{price}</td>
                 </tr>  
                 )
               })
