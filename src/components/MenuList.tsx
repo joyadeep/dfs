@@ -9,8 +9,8 @@ const MenuList:React.FC = () => {
         <table className='table-fixed text-left w-full border-collapse rounded-md overflow-hidden'>
           <thead className='text-white'>
             <tr className='text-xs  sm:text-lg  bg-gray-800 '>
-              <th className='pl-1 w-18 border  sm:py-3 sm:pl-4 sm:w-56 '>Item</th>
-              <th className='pl-1 w-14 border sm:px-4 sm:w-40'>Img</th>
+              <th className='pl-1 w-18 border  sm:py-3 sm:pl-4 sm:w-64 '>Item</th>
+              <th className='pl-1 w-14 border sm:px-4 sm:w-32'>Img</th>
               <th className='pl-1 w-[70px] border sm:px-4 sm:w-44'>Available Time</th>
               <th className='pl-1 w-10 border sm:px-4 sm:w-24'>Rate</th>
               <th className='pl-1 w-8 border sm:px-4 sm:w-24'>Init. Qty</th>
@@ -22,22 +22,33 @@ const MenuList:React.FC = () => {
           </thead>
           <tbody className='text-xl text-white'>
 
+
+
+
             {
               foods.map((item)=>{
                 return(
-                  <tr className='text-xs sm:text-xl even:bg-slate-400 odd:bg-slate-500 cursor-pointer transition-all duration-200 sm:hover:scale-[1.01]' key={item.id}>
+                  <tr className='text-xs sm:text-xl even:bg-slate-400 odd:bg-slate-500 cursor-pointer transition-all duration-200' key={item.id}>
                   <td className='border py-2 pl-1 sm:pl-4 text-left sm:w-60'>{item.name}</td>
-                  <td className='border pl-0 sm:pl-4'> <img className='w-24 h-16 overflow-hidden object-cover rounded-sm my-1' src={item.image}/> </td>
+                  <td className='border pl-0 sm:pl-4'> <img className='w-24 h-16 sm:w-28 overflow-hidden object-cover rounded-sm my-1' src={item.image} alt={item.name}/> </td>
                   <td className='border text-center sm:text-left sm:pl-4'> {item.availableTime} </td>
                   <td className='border pl-1 sm:pl-4'> {item.rate} </td>
                   <td className='border pl-1 sm:pl-4'> {item.initialQty}</td>
                   <td className='border pl-1 sm:px-4'>{item.availableQty}</td>
-                  <td className='border text-center font-serif'><Quantity/></td>
+                  <td className='border text-center'><Quantity/></td>
                   <td className='border pl-2 sm:pl-4'>{item.price}</td>
                 </tr>  
                 )
               })
             }
+
+
+
+
+
+
+
+
             <tr className='text-white bg-gray-600'>
               <td className='border'></td>
               <td className='border'></td>

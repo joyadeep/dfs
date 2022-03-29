@@ -1,7 +1,6 @@
 import React from 'react'
 import Categorybtns from '../components/Categorybtns'
 import MenuList from '../components/MenuList'
-import Quantity from '../components/Quantity'
 
 const Menu = () => {
   return (
