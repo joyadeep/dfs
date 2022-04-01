@@ -1,16 +1,27 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Quantity from './Quantity'
 import Button from './Button';
 import {useSelector,useDispatch} from 'react-redux'
 import { RootState } from '../app/store';
+import {addFood} from '../features/food/foodSlice'
 
+type FilterProp={
+  filterType:string;
+}
 
+const MenuList:React.FC<FilterProp> = ({filterType}) => {
 
-const MenuList:React.FC = () => {
-
+  
   const foodlist=useSelector((state:RootState)=>state.foodlist.foodlist);
-  // const dispatch=useDispatch();
+  const dispatch=useDispatch();
   const [price,setPrice]=useState<number>(0);
+  const placeOrder=()=>{
+    alert("order placed")
+  }
+  useEffect(()=>{
+    dispatch(addFood());
+    
+  },[dispatch])
   
   return (
     <>
@@ -31,29 +42,25 @@ const MenuList:React.FC = () => {
           </thead>
           <tbody className='text-xl text-white'>
 
+ 
 {
-  console.log(foodlist)
-  
-}
 
-
-            {
-              foodlist.map((item)=>{
-                return(
-                  <tr className='text-xs sm:text-xl even:bg-slate-400 odd:bg-slate-500 cursor-pointer transition-all duration-200' key={item.id}>
-                  <td className='border py-2 pl-1 sm:pl-4 text-left sm:w-60'>{item.name}</td>
-                  <td className='border pl-0 sm:pl-4'> <img className='w-24 h-16 sm:w-28 overflow-hidden object-cover rounded-sm my-1' src={item.image} alt={item.name}/> </td>
-                  <td className='border text-center sm:text-left sm:pl-4'> {item.availableTime} </td>
-                  <td className='border pl-1 sm:pl-4'> {item.rate} </td>
-                  <td className='border pl-1 sm:pl-4'> {item.initialQty}</td>
-                  <td className='border pl-1 sm:px-4'>{item.availableQty}</td>
+  foodlist.filter((item)=>item.category===filterType || item.name===filterType ).map((food)=>{
+    return(
+      <tr className='text-xs sm:text-xl even:bg-slate-400 odd:bg-slate-500 cursor-pointer transition-all duration-200' key={food.id}>
+                  <td className='border py-2 pl-1 sm:pl-4 text-left sm:w-60'>{food.name}</td>
+                  <td className='border pl-0 sm:pl-4'> <img className='w-24 h-16 sm:w-28 overflow-hidden object-cover rounded-sm my-1' src={food.image} alt={food.name}/> </td>
+                  <td className='border text-center sm:text-left sm:pl-4'> {food.availableTime} </td>
+                  <td className='border pl-1 sm:pl-4'> {food.rate} </td>
+                  <td className='border pl-1 sm:pl-4'> {food.initialQty}</td>
+                  <td className='border pl-1 sm:px-4'>{food.availableQty}</td>
                   <td className='border text-center'><Quantity/></td>
                   <td className='border pl-2 sm:pl-4'>{price}</td>
-                </tr>  
-                )
-              })
-            }
+                </tr>
+    )
+  })
 
+}
 
 
 
@@ -66,8 +73,8 @@ const MenuList:React.FC = () => {
               <td className='border'></td>
               <td className='border'></td>
               <td className='border'></td>
-              <td className='border'></td>
-              <td className='border'></td>
+              <td className='border'>Filter Type</td>
+              <td className='border'>{filterType}</td>
               <td className='text-center border text-lg sm:text-3xl '>total</td>
               <td className='border text-sm text-center sm:text-left sm:pl-4 sm:text-xl'>999.99</td>
             </tr>
@@ -76,7 +83,7 @@ const MenuList:React.FC = () => {
           </tbody>
           </table>
           <div className='text-right pr-5 mt-5'>
-            <Button name="Place Order" color="bg-blue-400"  />
+            <Button handleClick={placeOrder} name="Place Order" color="bg-blue-400"  />
           </div>  
         </div>
     </>

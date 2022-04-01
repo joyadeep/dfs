@@ -5,6 +5,10 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import Button from './Button';
 import {Link} from 'react-router-dom'
 
+type LoginProps={
+    login:boolean,
+    setLogin: React.Dispatch<React.SetStateAction<boolean>>
+}
 
 const schema=yup.object({
     email:yup.string().email("enter valid email").required("email field cannot be empty"),
@@ -13,14 +17,14 @@ const schema=yup.object({
 
 
 
-const Login:React.FC = () => {
+const Login:React.FC<LoginProps> = ({login,setLogin}) => {
 
 
     interface Logintype{
         email:string;
         password:string;
     }
-    const [login,setLogin]=useState<Logintype>({email:"",password:""})
+    const [inputs,setInputs]=useState<Logintype>({email:"",password:""})
    
 
 
@@ -29,11 +33,14 @@ const Login:React.FC = () => {
       });
 
       const submitEvent=handleSubmit((data):void=>{
-        setLogin({email: data.email,password: data.password});
+        setInputs({email: data.email,password: data.password});
         reset();        
       })
 
-
+const changeState=():void=>{
+    if(inputs.email==="jlimbu@deerhold.org" && inputs.password==="12345")
+    return setLogin(!login)
+}
 
   return (
     <>
@@ -49,7 +56,7 @@ const Login:React.FC = () => {
                     <input  className={errors.password?"border-2 border-red-500 h-12 pl-5 outline-none rounded text-xl":"border border-slate-300 h-12 pl-5 outline-none rounded text-xl"} placeholder="Password" type="password" {...register("password")}/>
                     <small className=' h-5 text-left text-red-600 pl-4 mt-0 mb-5'>{errors.password?.message}</small> 
 
-                    <Button name="Login" color="bg-green-700" font="text-2xl" margin="mx-auto" />
+                    <Button handleClick={changeState} name="Login" color="bg-green-700" font="text-2xl" margin="mx-auto" />
                    </form>
 
                 <Link to="/resetpw">    

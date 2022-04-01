@@ -18,3 +18,6 @@ export interface order{
     price:number;
 
 }
+export interface IfilterType{
+    type:string;
+}

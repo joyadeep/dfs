@@ -37,6 +37,9 @@ export const foodSlice=createSlice({
         },
         removeFood:(state,action:PayloadAction<number>)=>{
             console.log("food Removed !!");
+        },
+        filterFood:(state )=>{
+            console.log("fitering food items...");
         }
     }
 })
