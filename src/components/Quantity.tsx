@@ -9,7 +9,7 @@ const Quantity:React.FC = () => {
         }
     }
   return (
-    <div className='w-full flex sm:w-auto items-center justify-center space-x-0'>
+    <div className='select-none w-full flex sm:w-auto items-center justify-center space-x-0'>
         <MinusIcon onClick={handleMinus} 
             className='w-10 h-7 px-1 sm:w-10 bg-green-500 sm:h-10   text-3xl  rounded-md cursor-pointer' 
         />

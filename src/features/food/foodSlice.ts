@@ -1,5 +1,4 @@
 import {createSlice,PayloadAction} from '@reduxjs/toolkit'
-import React from 'react'
 import foods from '../../api/fooditem'
 import {food} from '../../interfaces/foodInterface'
 
