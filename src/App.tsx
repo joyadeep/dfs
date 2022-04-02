@@ -7,12 +7,12 @@ import Menu from './pages/Menu';
 import Error from './pages/Error';
 import ForgotPw from './pages/ForgotPw';
 function App() {
-  const [login,setLogin]=useState<boolean>(true);
+  const [isLoggedIn,setIsLoggedIn]=useState<boolean>(false);
   return (
-    <div className='bg-slate-100 mi5a5aan-h-screen '>
-     <Header login={login}/>
+    <div className='bg-slate-100 min-h-screen '>
+     <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
      <Routes>
-       <Route path='/' element={<Login login={login} setLogin={setLogin}/>}/>
+       <Route path='/' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
        <Route path="/about" element={<About/>} />
        <Route path="/menu" element={<Menu/>} />
        <Route path='/resetpw' element={<ForgotPw/>} />

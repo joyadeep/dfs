@@ -4,10 +4,11 @@ import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup'
 import Button from './Button';
 import {Link} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 
 type LoginProps={
-    login:boolean,
-    setLogin: React.Dispatch<React.SetStateAction<boolean>>
+    isLoggedIn:boolean,
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const schema=yup.object({
@@ -17,8 +18,10 @@ const schema=yup.object({
 
 
 
-const Login:React.FC<LoginProps> = ({login,setLogin}) => {
+const Login:React.FC<LoginProps> = ({isLoggedIn,setIsLoggedIn}) => {
 
+
+    const navigate=useNavigate();
 
     interface Logintype{
         email:string;
@@ -34,13 +37,15 @@ const Login:React.FC<LoginProps> = ({login,setLogin}) => {
 
       const submitEvent=handleSubmit((data):void=>{
         setInputs({email: data.email,password: data.password});
+        if(data.email==="jlimbu@deerhold.org" && data.password==="12345")
+        {
+            // alert("logged in successfully");
+            setIsLoggedIn(true);
+            navigate("/menu");
+        }
         reset();        
       })
 
-const changeState=():void=>{
-    if(inputs.email==="jlimbu@deerhold.org" && inputs.password==="12345")
-    return setLogin(!login)
-}
 
   return (
     <>
@@ -52,11 +57,9 @@ const changeState=():void=>{
 
                     <input  className={errors.email?"border-2 border-red-500 h-12 pl-5  outline-none rounded text-xl":"border border-slate-300 h-12 pl-5  outline-none rounded text-xl"} placeholder="Email" type="text" {...register("email")}/>
                     <small className=' h-5 text-left text-red-600 pl-4 mt-0 mb-2 '>{errors.email?.message}</small> 
-
                     <input  className={errors.password?"border-2 border-red-500 h-12 pl-5 outline-none rounded text-xl":"border border-slate-300 h-12 pl-5 outline-none rounded text-xl"} placeholder="Password" type="password" {...register("password")}/>
                     <small className=' h-5 text-left text-red-600 pl-4 mt-0 mb-5'>{errors.password?.message}</small> 
-
-                    <Button handleClick={changeState} name="Login" color="bg-green-700" font="text-2xl" margin="mx-auto" />
+                    <Button  name="Login" color="bg-green-700" font="text-2xl" margin="mx-auto" />
                    </form>
 
                 <Link to="/resetpw">    
@@ -73,10 +76,7 @@ const changeState=():void=>{
                         DFS v 5.4.3 © 2022
                     </div>
                 </div>
-              {/* <h1>
-                  email : {login.email} <br />
-                  password:{login.password}
-                  </h1>  */}
+              
             </div>
 
         </div>
