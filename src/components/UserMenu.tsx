@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import {Link,useNavigate} from 'react-router-dom'
+import { logout } from '../features/user/userSlice';
 
-type LoggedInType={
-  setIsLoggedIn:React.Dispatch<React.SetStateAction<boolean>>
-}
 
-const UserMenu:React.FC<LoggedInType> = ({setIsLoggedIn}) => {
+const UserMenu:React.FC = () => {
 
+  const dispatch=useDispatch();
   const [time,setTime]=useState<string>((new Date()).toLocaleString());
   const navigate=useNavigate();
  
@@ -21,7 +21,7 @@ const UserMenu:React.FC<LoggedInType> = ({setIsLoggedIn}) => {
   // },[setTime])
 
 const handleClick=()=>{
-  setIsLoggedIn(false);
+  dispatch(logout());
   navigate("/");
 
 }
@@ -58,9 +58,6 @@ const handleClick=()=>{
                   <button className='block' onClick={()=>{handleClick()}}>Signout</button>
                 </div>
               </div>
-              
-{/*               
-              <Link to="/" className='border-b rounded-none sm:border-2 sm:border-purple-500 px-2 py-1 sm:rounded-md hover:bg-purple-300 hover:border-purple-300 hover:text-white'>Account V</Link> */}
             </nav>
             
     </div>

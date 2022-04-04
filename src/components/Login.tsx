@@ -5,11 +5,11 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import Button from './Button';
 import {Link} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom';
+import {useDispatch,useSelector} from 'react-redux'
+import { RootState } from '../app/store';
+import { login } from '../features/user/userSlice';
 
-type LoginProps={
-    isLoggedIn:boolean,
-    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
-}
+
 
 const schema=yup.object({
     email:yup.string().email("enter valid email").required("email field cannot be empty"),
@@ -18,8 +18,10 @@ const schema=yup.object({
 
 
 
-const Login:React.FC<LoginProps> = ({isLoggedIn,setIsLoggedIn}) => {
+const Login:React.FC= () => {
 
+    const userlog=useSelector((state:RootState)=>state.user.isLoggedIn);
+    const dispatch=useDispatch();
 
     const navigate=useNavigate();
 
@@ -40,7 +42,8 @@ const Login:React.FC<LoginProps> = ({isLoggedIn,setIsLoggedIn}) => {
         if(data.email==="jlimbu@deerhold.org" && data.password==="12345")
         {
             // alert("logged in successfully");
-            setIsLoggedIn(true);
+            // setIsLoggedIn(true);
+            dispatch(login());
             navigate("/menu");
         }
         reset();        

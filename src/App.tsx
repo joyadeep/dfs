@@ -9,17 +9,20 @@ import ForgotPw from './pages/ForgotPw';
 import ChangePw from './pages/ChangePw';
 import Report from './pages/Report';
 import Feedback from './pages/Feedback';
+import { useSelector } from 'react-redux';
+import { RootState } from './app/store';
 function App() {
-  const [isLoggedIn,setIsLoggedIn]=useState<boolean>(false);
+
+  const isLoggedIn=useSelector((state:RootState)=>state.user.isLoggedIn)
   return (
     <div className='bg-slate-100 min-h-screen '>
-     <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+     <Header/>
      <Routes>
-       <Route path='/' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
+       <Route path='/' element={<Login/>}/>
        <Route path="/about" element={<About/>} />
-       <Route path="/menu" element={<Menu isLoggedIn={isLoggedIn}/>} />
+       <Route path="/menu" element={<Menu/>} />
        <Route path='/resetpw' element={<ForgotPw/>} />
-       <Route path="/change_password" element={<ChangePw isLoggedIn={isLoggedIn}/>} />
+       <Route path="/change_password" element={<ChangePw/>} />
        <Route path="/report" element={<Report/>} />
        <Route path="/feedback" element={<Feedback/>} />
        <Route path="*" element={ <Error/> } />

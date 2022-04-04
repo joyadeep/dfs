@@ -3,12 +3,12 @@ import Categorybtns from '../components/Categorybtns'
 import MenuList from '../components/MenuList'
 import {Navigate} from 'react-router-dom';
 import { food } from '../interfaces/foodInterface';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 
-type MenuProp={
-  isLoggedIn:boolean;
-}
 
-const Menu:React.FC<MenuProp> = ({isLoggedIn}) => {
+const Menu:React.FC = () => {
+  const isLoggedIn=useSelector((state:RootState)=>state.user.isLoggedIn)
  const [filterFood,setFilterFood]=useState<food[]>([]);
   return (
     <>
