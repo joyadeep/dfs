@@ -1,18 +1,25 @@
 import React, { useState } from 'react'
 import Categorybtns from '../components/Categorybtns'
 import MenuList from '../components/MenuList'
+import {Navigate} from 'react-router-dom';
+import { food } from '../interfaces/foodInterface';
 
+type MenuProp={
+  isLoggedIn:boolean;
+}
 
-const Menu = () => {
-
- const[fitlerType,setFilterType]=useState<string>("all_time")
+const Menu:React.FC<MenuProp> = ({isLoggedIn}) => {
+ const [filterFood,setFilterFood]=useState<food[]>([]);
   return (
     <>
-        <div className='w-[97%] h-fit mx-auto sm:w-11/12 '>
-            <Categorybtns setFilterType={setFilterType} />
-            <MenuList filterType={fitlerType} />
-
-        </div>
+    
+    {!isLoggedIn?<Navigate to="/" replace/>:
+     <div className='w-[97%] h-fit mx-auto sm:w-11/12 '>
+     <Categorybtns setFilterFood={setFilterFood} />
+     <MenuList  filterFood={filterFood} />
+ </div>
+    }
+       
 
     </>
   )

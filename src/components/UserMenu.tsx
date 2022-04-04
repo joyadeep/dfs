@@ -11,14 +11,14 @@ const UserMenu:React.FC<LoggedInType> = ({setIsLoggedIn}) => {
   const navigate=useNavigate();
  
   
-  useEffect(()=>{
-   const interval=setInterval(()=>{
-      setTime((new Date()).toLocaleString());
-    },1000)  
+  // useEffect(()=>{
+  //  const interval=setInterval(()=>{
+  //     setTime((new Date()).toLocaleString());
+  //   },1000)  
 
-    return ()=>clearInterval(interval);
+  //   return ()=>clearInterval(interval);
     
-  },[setTime])
+  // },[setTime])
 
 const handleClick=()=>{
   setIsLoggedIn(false);

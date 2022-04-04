@@ -1,8 +1,17 @@
 import React from 'react'
+import {Navigate} from 'react-router-dom'
+type ChangePwType={
+  isLoggedIn:boolean
+}
 
-const ChangePw = () => {
+const ChangePw:React.FC<ChangePwType> = ({isLoggedIn}) => {
   return (
-    <div>ChangePw</div>
+    <>
+    {
+      !isLoggedIn?<Navigate to="/" />:<div>Change password</div>
+    }
+    </>
+    
   )
 }
 

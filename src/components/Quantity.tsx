@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import {MinusIcon,PlusIcon} from '@heroicons/react/outline'
 
-const Quantity:React.FC = () => {
+type availableQtyType={
+    availableQty:number
+}
+
+const Quantity:React.FC<availableQtyType> = ({availableQty}) => {
     const [qty,setQty]=useState<number>(0);
     const handleMinus=():void=>{
         if(qty!==0){
@@ -14,7 +18,7 @@ const Quantity:React.FC = () => {
             className='w-10 h-7 px-1 sm:w-10 bg-green-500 sm:h-10   text-3xl  rounded-md cursor-pointer' 
         />
         <div 
-            className='text-white text-sm sm:text-xl   w-7 sm:w-10'>{qty}
+            className={availableQty===0?'text-gray-500 text-sm sm:text-xl  w-7 sm:w-10':'text-white text-sm sm:text-xl  w-7 sm:w-10'}>{qty}
         </div>
         <PlusIcon onClick={()=>{setQty(qty+1)}} 
             className='flex w-10 h-7 px-1 sm:w-10 sm:h-10 bg-green-500 text-3xl  rounded-md cursor-pointer' 

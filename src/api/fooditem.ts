@@ -1,4 +1,4 @@
-export default  [
+const foodlist= [
     {
         id:1,
         category:"lunch",
@@ -7,7 +7,7 @@ export default  [
         availableTime:"09:00 - 4:00",
         rate:100.50,
         initialQty:20,
-        availableQty:10,
+        availableQty:0,
         price:0
     },
     {
@@ -18,7 +18,7 @@ export default  [
         availableTime:"09:00 - 4:00",
         rate:42.50,
         initialQty:20,
-        availableQty:20,
+        availableQty:0,
         price:0
     },
     {
@@ -155,3 +155,5 @@ export default  [
     }
     
 ]
+
+export default foodlist;

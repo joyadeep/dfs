@@ -7,7 +7,7 @@ interface listSliceState{
 }
 
 const initialState:listSliceState={
-    foodlist:[]
+    foodlist:foods
 }
 
 export const foodSlice=createSlice({
@@ -16,23 +16,6 @@ export const foodSlice=createSlice({
     reducers:{
         addFood:(state)=>{
             state.foodlist=foods
-            // [
-                // ...state.foodlist,
-                
-                // {
-                    
-                    // id:1,
-                    // category:"breakfast",
-                    // name:"fried rice",
-                    // image:"image 1",
-                    // availableTime:"9-5",
-                    // rate:100,
-                    // initialQty:40,
-                    // availableQty:10,
-                    // price:100
-                // }
-            // ]
-            // console.log("food added !!");
         },
         removeFood:(state,action:PayloadAction<number>)=>{
             console.log("food Removed !!");

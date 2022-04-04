@@ -1,22 +1,42 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Button from './Button'
+import {food} from '../interfaces/foodInterface'
+import {useSelector} from 'react-redux'
+import { RootState } from '../app/store'
 
 type FilterProp={
-  setFilterType: React.Dispatch<React.SetStateAction<string>>
+  setFilterFood:React.Dispatch<React.SetStateAction<food[]>>
 }
 
-const Categorybtns:React.FC<FilterProp> = ({setFilterType}) => {
+const Categorybtns:React.FC<FilterProp> = ({setFilterFood}) => {
+  const foodlist=useSelector((state:RootState)=>state.foodlist.foodlist);
+
+  const [flist,setFlist]=useState(foodlist);
+  useEffect(()=>{
+    setFilterFood(flist);
+  },[])
+  
   const searchfoodRef=useRef<HTMLInputElement | null>(null);
+
 
   const handleSearch=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault();
     const search= (searchfoodRef.current as HTMLInputElement).value;
-    search && setFilterType(search);
+    setFilterFood(flist.filter((item)=>item.name===search));
     (searchfoodRef.current as HTMLInputElement).value="";
   }
 
   const buttonClicked=(name:string)=>{
-      setFilterType(name);
+      if(name==='all_time'){
+        setFilterFood(flist);
+      }
+      else{
+
+        const filteredData=flist.filter((food)=>food.category===name);
+        setFilterFood(filteredData);
+         
+      }
+
   }
 
   return (
