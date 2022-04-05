@@ -5,8 +5,7 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import Button from './Button';
 import {Link} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom';
-import {useDispatch,useSelector} from 'react-redux'
-import { RootState } from '../app/store';
+import {useDispatch} from 'react-redux'
 import { login } from '../features/user/userSlice';
 
 
@@ -20,7 +19,6 @@ const schema=yup.object({
 
 const Login:React.FC= () => {
 
-    const userlog=useSelector((state:RootState)=>state.user.isLoggedIn);
     const dispatch=useDispatch();
 
     const navigate=useNavigate();
@@ -41,9 +39,8 @@ const Login:React.FC= () => {
         setInputs({email: data.email,password: data.password});
         if(data.email==="jlimbu@deerhold.org" && data.password==="12345")
         {
-            // alert("logged in successfully");
-            // setIsLoggedIn(true);
             dispatch(login());
+            sessionStorage.setItem("loggedin","true");
             navigate("/menu");
         }
         reset();        

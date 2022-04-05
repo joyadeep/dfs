@@ -11,11 +11,14 @@ export interface food{
 }
 
 export interface order{
-    userid:number;
-    id:number;
+    userId:number;
+    foodId:number;
+    item:string;
+    rate:number;
     time:string; // TODO should be Date but used string for convention
     quantity:number;
     price:number;
+    status:boolean;
 
 }
 export interface IfilterType{

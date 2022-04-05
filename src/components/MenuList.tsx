@@ -3,9 +3,9 @@ import Quantity from './Quantity'
 import Button from './Button';
 import {useSelector,useDispatch} from 'react-redux'
 import { RootState } from '../app/store';
-import {addFood} from '../features/food/foodSlice'
 import {food} from '../interfaces/foodInterface'
-
+import Menulistrow from './Menulistrow';
+import { updatePrice } from '../features/food/totalPriceSlice';
 type FilterProp={
   filterFood:food[];
 }
@@ -13,12 +13,14 @@ type FilterProp={
 
 const MenuList:React.FC<FilterProp> = ({filterFood}) => {
 
-  
   const foodlist=useSelector((state:RootState)=>state.foodlist.foodlist);
-  const[fetchList,setFetchList]=useState<food[]>(foodlist)
-  
+  const [totalPrice,setTotalPrice]=useState<number>(0);
+  const total=useSelector((state:RootState)=>state.totalPrice.totalPrice)
+  const dispatch=useDispatch();
+
   const placeOrder=()=>{
-    alert("order placed")
+    // const newtotal=dispatch(updatePrice(100))
+    setTotalPrice(total);
   }
 
 
@@ -44,39 +46,21 @@ const MenuList:React.FC<FilterProp> = ({filterFood}) => {
 
 {
  filterFood.map((food)=>{
-   const {name,image,availableQty,initialQty,availableTime,category,id,price,rate}=food;
     return(
-      // <tr className='text-xs sm:text-xl even:bg-slate-400 odd:bg-slate-500 cursor-pointer transition-all duration-200' key={food.id}>
-                  <tr key={id} className={availableQty===0?"bg-gray-300 text-gray-500":"text-xs sm:text-xl even:bg-slate-400 odd:bg-slate-500 cursor-pointer transition-all duration-200"}>
-                  <td className='border py-2 pl-1 sm:pl-4 text-left sm:w-60'>{name}</td>
-                  <td className='border'> <img className='mx-auto w-24 h-16 sm:w-28 overflow-hidden object-cover rounded-sm my-1' src={image} alt={name}/> </td>
-                  <td className='border text-center sm:text-left sm:pl-4'> {availableTime} </td>
-                  <td className='border pl-1 sm:pl-4'> {rate} </td>
-                  <td className='border pl-1 sm:pl-4'> {initialQty}</td>
-                  <td className='border pl-1 sm:px-4'>{availableQty}</td>
-                  <td className='border text-center'><Quantity availableQty={availableQty}/></td>
-                  <td className='border pl-2 sm:pl-4'>00</td>
-                </tr>
-    )
+                <Menulistrow key={food.id} availableQty={food.availableQty} totalPrice={totalPrice} setTotalPrice={setTotalPrice} food={food} />
+          )
   })
 
 }
-
-
-
-
-
-
-
             <tr className='text-white bg-gray-600'>
               <td className='border'></td>
               <td className='border'></td>
               <td className='border'></td>
               <td className='border'></td>
-              <td className='border'>Filter Type</td>
+              <td className='border'></td>
               <td className='border'></td>
               <td className='text-center border text-lg sm:text-3xl '>total</td>
-              <td className='border text-sm text-center sm:text-left sm:pl-4 sm:text-xl'>999.99</td>
+              <td className='border text-sm text-center sm:text-left sm:pl-4 sm:text-xl'>{total}</td>
             </tr>
   
 

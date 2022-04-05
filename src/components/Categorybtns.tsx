@@ -22,7 +22,8 @@ const Categorybtns:React.FC<FilterProp> = ({setFilterFood}) => {
   const handleSearch=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault();
     const search= (searchfoodRef.current as HTMLInputElement).value;
-    setFilterFood(flist.filter((item)=>item.name===search));
+    const refinedSearch=search.toLowerCase();
+    setFilterFood(flist.filter((item)=>item.name===refinedSearch || item.name.includes(refinedSearch)));
     (searchfoodRef.current as HTMLInputElement).value="";
   }
 

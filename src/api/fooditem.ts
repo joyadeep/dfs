@@ -13,7 +13,7 @@ const foodlist= [
     {
         id:2,
         category:"breakfast",
-        name:"black Coffee",
+        name:"black coffee",
         image:"assets/foods/blackCoffee.jpg",
         availableTime:"09:00 - 4:00",
         rate:42.50,
@@ -123,7 +123,7 @@ const foodlist= [
     {
         id:12,
         category:"breakfast",
-        name:"black Coffee",
+        name:"black coffee",
         image:"assets/foods/blackCoffee.jpg",
         availableTime:"09:00 - 04:00",
         rate:42.50,

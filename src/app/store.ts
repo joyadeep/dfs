@@ -1,10 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit'
 import foodReducer from '../features/food/foodSlice';
+import totalPriceSlice from '../features/food/totalPriceSlice';
 import userSlice from '../features/user/userSlice';
 export const store= configureStore({
     reducer:{
         foodlist:foodReducer,
-        user:userSlice
+        user:userSlice,
+        totalPrice:totalPriceSlice
     },
 })
 

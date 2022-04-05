@@ -10,8 +10,10 @@ import { RootState } from '../app/store';
 const Menu:React.FC = () => {
   const isLoggedIn=useSelector((state:RootState)=>state.user.isLoggedIn)
  const [filterFood,setFilterFood]=useState<food[]>([]);
+ const loginfo=sessionStorage.getItem("loggedin");  
   return (
     <>
+    <h1>{typeof(loginfo)}</h1>
     
     {!isLoggedIn?<Navigate to="/" replace/>:
      <div className='w-[97%] h-fit mx-auto sm:w-11/12 '>
