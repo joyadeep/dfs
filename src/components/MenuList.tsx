@@ -5,7 +5,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import { RootState } from '../app/store';
 import {food} from '../interfaces/foodInterface'
 import Menulistrow from './Menulistrow';
-import { updatePrice } from '../features/food/totalPriceSlice';
+import { updatePrice,resetPrice } from '../features/food/totalPriceSlice';
 type FilterProp={
   filterFood:food[];
 }
@@ -13,14 +13,17 @@ type FilterProp={
 
 const MenuList:React.FC<FilterProp> = ({filterFood}) => {
 
-  const foodlist=useSelector((state:RootState)=>state.foodlist.foodlist);
+  // const foodlist=useSelector((state:RootState)=>state.foodlist.foodlist);
   const [totalPrice,setTotalPrice]=useState<number>(0);
   const total=useSelector((state:RootState)=>state.totalPrice.totalPrice)
   const dispatch=useDispatch();
 
   const placeOrder=()=>{
     // const newtotal=dispatch(updatePrice(100))
-    setTotalPrice(total);
+    // setTotalPrice(total);
+    dispatch(resetPrice())
+    console.log(total);
+    
   }
 
 

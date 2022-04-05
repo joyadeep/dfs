@@ -16,7 +16,7 @@ const Menulistrow:React.FC<availableQtyProp> = ({availableQty,food,totalPrice,se
     const dispatch=useDispatch();
     let price=(food.rate*quantity);
     useEffect(()=>{
-      dispatch(updatePrice(price))
+      dispatch(updatePrice(food.rate))
     },[price])
   return (
       <>
