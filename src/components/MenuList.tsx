@@ -12,17 +12,14 @@ type FilterProp={
 
 
 const MenuList:React.FC<FilterProp> = ({filterFood}) => {
-
-  // const foodlist=useSelector((state:RootState)=>state.foodlist.foodlist);
-  const [totalPrice,setTotalPrice]=useState<number>(0);
+const [totalPrice,setTotalPrice]=useState<number>(0);
   const total=useSelector((state:RootState)=>state.totalPrice.totalPrice)
   const dispatch=useDispatch();
 
   const placeOrder=()=>{
-    // const newtotal=dispatch(updatePrice(100))
-    // setTotalPrice(total);
-    dispatch(resetPrice())
-    console.log(total);
+    total!==0 && alert("food ordered successfully")
+    // TODO : update orderslice and toastify successful order
+    // TODO : update foodlist (available quantity) also set price to 0
     
   }
 

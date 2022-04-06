@@ -13,7 +13,6 @@ const Menu:React.FC = () => {
  const loginfo=sessionStorage.getItem("loggedin");  
   return (
     <>
-    <h1>{typeof(loginfo)}</h1>
     
     {!isLoggedIn?<Navigate to="/" replace/>:
      <div className='w-[97%] h-fit mx-auto sm:w-11/12 '>

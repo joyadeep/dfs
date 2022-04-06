@@ -1,24 +1,37 @@
 import React, { useState } from 'react'
 import {MinusIcon,PlusIcon} from '@heroicons/react/outline'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../app/store'
+import { decreasePrice, updatePrice } from '../features/food/totalPriceSlice'
 
 type availableQtyType={
     availableQty:number,
     quantity:number,
-    setQuantity:React.Dispatch<React.SetStateAction<number>>
+    setQuantity:React.Dispatch<React.SetStateAction<number>>,
+    rate:number
 }
 
-const Quantity:React.FC<availableQtyType> = ({quantity,setQuantity,availableQty}) => {
-    // const [qty,setQty]=useState<number>(0);
+const Quantity:React.FC<availableQtyType> = ({quantity,setQuantity,availableQty,rate}) => {
+    
+    const total=useSelector((state:RootState)=>state.totalPrice.totalPrice);
+    const dispatch=useDispatch();
+    
+    
+    
     const handleMinus=():void=>{
         if(quantity!==0){
             setQuantity(quantity-1)
+            dispatch(decreasePrice(rate));
         }
     }
 const handlePlus=()=>{
     if(availableQty!==0)
     {
         if(quantity<availableQty)
-        setQuantity(quantity+1);
+        {
+            setQuantity(quantity+1);
+            dispatch(updatePrice(rate));
+        }
         else
         return quantity;
     }

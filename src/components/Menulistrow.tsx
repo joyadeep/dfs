@@ -13,11 +13,7 @@ type availableQtyProp={
 
 const Menulistrow:React.FC<availableQtyProp> = ({availableQty,food,totalPrice,setTotalPrice}) => {
     const [quantity,setQuantity]=useState<number>(0);
-    const dispatch=useDispatch();
-    let price=(food.rate*quantity);
-    useEffect(()=>{
-      dispatch(updatePrice(food.rate))
-    },[price])
+    
   return (
       <>
      
@@ -28,8 +24,8 @@ const Menulistrow:React.FC<availableQtyProp> = ({availableQty,food,totalPrice,se
     <td className='border pl-1 sm:pl-4'> {food.rate} </td>
     <td className='border pl-1 sm:pl-4'> {food.initialQty}</td>
     <td className='border pl-1 sm:px-4'>{availableQty}</td>
-    <td className='border text-center'><Quantity availableQty={availableQty} quantity={quantity} setQuantity={setQuantity} /></td>
-    <td className='border pl-2 sm:pl-4'>{price}</td>
+    <td className='border text-center'><Quantity availableQty={availableQty} rate={food.rate} quantity={quantity} setQuantity={setQuantity} /></td>
+    <td className='border pl-2 sm:pl-4'>{food.rate*quantity}</td>
   </tr>
       </>
   )

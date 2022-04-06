@@ -14,11 +14,15 @@ export const totalPriceSlice=createSlice({
         },
         updatePrice:(state,action:PayloadAction<number>)=>{
             state.totalPrice+=action.payload;
-            console.log(state);
+            // console.log(state);
+        },
+        decreasePrice:(state,action:PayloadAction<number>)=>{
+            state.totalPrice-=action.payload;
         }
+
     }
 })
 
 
-export const {updatePrice,resetPrice}=totalPriceSlice.actions;
+export const {updatePrice,resetPrice,decreasePrice}=totalPriceSlice.actions;
 export default totalPriceSlice.reducer;
