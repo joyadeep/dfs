@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import {Link,useNavigate} from 'react-router-dom'
 import { logout } from '../features/user/userSlice';
@@ -11,14 +11,14 @@ const UserMenu:React.FC = () => {
   const navigate=useNavigate();
  
   
-  // useEffect(()=>{
-  //  const interval=setInterval(()=>{
-  //     setTime((new Date()).toLocaleString());
-  //   },1000)  
+  useEffect(()=>{
+   const interval=setInterval(()=>{
+      setTime((new Date()).toLocaleString());
+    },1000)  
 
-  //   return ()=>clearInterval(interval);
+    return ()=>clearInterval(interval);
     
-  // },[setTime])
+  },[setTime])
 
 const handleClick=()=>{
   dispatch(logout());

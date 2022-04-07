@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { updatePrice } from '../features/food/totalPriceSlice'
-import { food } from '../interfaces/foodInterface'
+import React, { useState } from 'react'
+import { food, order } from '../interfaces/foodInterface'
 import Quantity  from './Quantity'
 
 type availableQtyProp={
@@ -9,9 +7,11 @@ type availableQtyProp={
     food:food,
     totalPrice:number,
     setTotalPrice:React.Dispatch<React.SetStateAction<number>>
+    order:order[],
+    setOrder:React.Dispatch<React.SetStateAction<order[]>>
 }
 
-const Menulistrow:React.FC<availableQtyProp> = ({availableQty,food,totalPrice,setTotalPrice}) => {
+const Menulistrow:React.FC<availableQtyProp> = ({availableQty,food,totalPrice,setTotalPrice,order,setOrder}) => {
     const [quantity,setQuantity]=useState<number>(0);
     
   return (
@@ -24,9 +24,11 @@ const Menulistrow:React.FC<availableQtyProp> = ({availableQty,food,totalPrice,se
     <td className='border pl-1 sm:pl-4'> {food.rate} </td>
     <td className='border pl-1 sm:pl-4'> {food.initialQty}</td>
     <td className='border pl-1 sm:px-4'>{availableQty}</td>
-    <td className='border text-center'><Quantity availableQty={availableQty} rate={food.rate} quantity={quantity} setQuantity={setQuantity} /></td>
+    <td className='border text-center'><Quantity order={order} setOrder={setOrder} food={food} availableQty={availableQty} rate={food.rate} quantity={quantity} setQuantity={setQuantity} /></td>
     <td className='border pl-2 sm:pl-4'>{food.rate*quantity}</td>
   </tr>
+  {console.log(`quantity at Menulistrow : ${quantity}`)
+  }
       </>
   )
 }

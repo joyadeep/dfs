@@ -3,15 +3,19 @@ import {MinusIcon,PlusIcon} from '@heroicons/react/outline'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../app/store'
 import { decreasePrice, updatePrice } from '../features/food/totalPriceSlice'
+import { food, order } from '../interfaces/foodInterface'
 
 type availableQtyType={
     availableQty:number,
     quantity:number,
     setQuantity:React.Dispatch<React.SetStateAction<number>>,
-    rate:number
+    rate:number,
+    food:food,
+    order:order[],
+    setOrder:React.Dispatch<React.SetStateAction<order[]>>
 }
 
-const Quantity:React.FC<availableQtyType> = ({quantity,setQuantity,availableQty,rate}) => {
+const Quantity:React.FC<availableQtyType> = ({quantity,setQuantity,availableQty,rate,food,order,setOrder}) => {
     
     const total=useSelector((state:RootState)=>state.totalPrice.totalPrice);
     const dispatch=useDispatch();
@@ -21,6 +25,8 @@ const Quantity:React.FC<availableQtyType> = ({quantity,setQuantity,availableQty,
     const handleMinus=():void=>{
         if(quantity!==0){
             setQuantity(quantity-1)
+            console.log(`minus : foodid: ${food.id} ${food.name}`);
+            
             dispatch(decreasePrice(rate));
         }
     }
@@ -30,7 +36,38 @@ const handlePlus=()=>{
         if(quantity<availableQty)
         {
             setQuantity(quantity+1);
+            // console.log(`plus : foodid: ${food.id} ${food.name}`);
             dispatch(updatePrice(rate));
+            // setOrder([...order,{userId:1,foodId:food.id,item:food.name,rate:food.rate,price:food.price,quantity:1,status:false,time:new Date().toString()}])
+            // if(food.id===order.)
+            order.map((item)=>{
+                if(item.foodId===food.id)
+                {
+                    // TODO update object
+                // console.log(`food matched !!! quantity : ${quantity}`);
+                console.log(`quantity before : ${quantity}`);
+                
+                    const index=order.findIndex(item=>item.foodId===food.id)
+                    order[index]={userId:1,foodId:item.foodId,item:food.name,rate:food.rate,price:food.rate*quantity,quantity:quantity,status:false,time:new Date().toString()}
+                    // console.log(`food id : ${item.foodId} index: ${index}`);
+                    // console.log(order);
+
+                    console.log(`quantity after : ${quantity}`);
+                    
+                // order.splice(0,1,{userId:1,foodId:food.id,item:food.name,rate:food.rate,price:food.price,quantity:quantity,status:false,time:new Date().toString()})
+                
+                }
+
+                else{
+                    setOrder([...order,{userId:1,foodId:food.id,item:food.name,rate:food.rate,price:food.price,quantity:1,status:false,time:new Date().toString()}])
+                    console.log('item updated');
+                    console.log(order);
+                    
+                    
+                }
+            })
+            
+            
         }
         else
         return quantity;

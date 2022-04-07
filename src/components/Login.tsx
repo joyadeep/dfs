@@ -40,7 +40,7 @@ const Login:React.FC= () => {
         if(data.email==="jlimbu@deerhold.org" && data.password==="12345")
         {
             dispatch(login());
-            sessionStorage.setItem("loggedin","true");
+            // sessionStorage.setItem("loggedin","true");
             navigate("/menu");
         }
         reset();        
@@ -49,7 +49,7 @@ const Login:React.FC= () => {
 
   return (
     <>
-        <div className='w-full h-screen bg-slate-100 mt-20   flex  justify-center  sm:h-fit sm:mt-16 sm:items-center'>
+        <div className='w-full h-screen bg-slate-100 mt-20   flex  justify-center  sm:h-fit sm:mt-5 sm:items-center'>
 
             <div className='w-11/12 h-fit bg-white shadow-lg border border-gray-200 px-2 py-5 text-center rounded-lg md:w-1/3  '>
                 <img src='./assets/logo.png' alt='deerwalk foodsystem logo' className=' mx-auto'/>

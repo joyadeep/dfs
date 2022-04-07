@@ -13,6 +13,12 @@ export const orderSlice = createSlice({
     name:"orderSlice",
     initialState,
     reducers:{
+        setOrders:(state,action:PayloadAction<order[]>)=>{
+            // state.orderlist=[...state.orderlist,action.payload]
+            console.log("order updated");
+            console.log(state.orderlist);
+            
+        },
         getOrders:(state)=>{
             console.log("got all orders")
         },
