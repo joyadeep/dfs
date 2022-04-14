@@ -11,14 +11,14 @@ const UserMenu:React.FC = () => {
   const navigate=useNavigate();
  
   
-  useEffect(()=>{
-   const interval=setInterval(()=>{
-      setTime((new Date()).toLocaleString());
-    },1000)  
+  // useEffect(()=>{
+  //  const interval=setInterval(()=>{
+  //     setTime((new Date()).toLocaleString());
+  //   },1000)  
 
-    return ()=>clearInterval(interval);
+  //   return ()=>clearInterval(interval);
     
-  },[setTime])
+  // },[setTime])
 
 const handleClick=()=>{
   dispatch(logout());
@@ -39,10 +39,10 @@ const handleClick=()=>{
             </div>
               </div>
             <nav className='flex flex-col text-2xl space-y-5  sm:space-y-0 mt-7  sm:flex-row sm:text-xl sm:mt-2 sm:mb-1 sm:font-semibold sm:justify-between  sm:w-11/12 mx-auto'>
-              <Link to="/menu" className='border-b rounded-none sm:border-2 sm:border-purple-500 px-2 py-1 sm:rounded-md hover:bg-purple-300 hover:border-purple-300 hover:text-white'>Deerwalk Foods</Link>
-              <Link to="/feedback" className='border-b rounded-none sm:border-2 sm:border-purple-500 px-2 py-1 sm:rounded-md hover:bg-purple-300 hover:border-purple-300 hover:text-white'>Feedback</Link>
+              <Link to="/menu" className='border-b rounded-none sm:border-2 sm:border-[#f57d49] px-2 py-1 sm:rounded-md hover:bg-[#f59064] hover:border-[#f59064] hover:text-white'>Deerwalk Foods</Link>
+              <Link to="/feedback" className='border-b rounded-none sm:border-2 sm:border-[#f57d49] px-2 py-1 sm:rounded-md hover:bg-[#f59064] hover:border-[#f59064] hover:text-white'>Feedback</Link>
               
-              <div className='group relative border-b rounded-none sm:border-2 sm:border-purple-500 px-2 py-1 sm:rounded-md hover:bg-purple-300 hover:border-purple-300 hover:text-white'>
+              <div className='group relative border-b rounded-none sm:border-2 sm:border-[#f57d49] px-2 py-1 sm:rounded-md hover:bg-[#f59064] hover:border-[#f59064] hover:text-white'>
                 <div className='cursor-pointer'>Report</div>
                 <div className='group-hover:block left-0 hidden rounded-md absolute w-40 z-10 mt-1 py-3 px-3 bg-slate-400 text-white'>
                   <Link to="/report">My Report</Link>
@@ -51,7 +51,7 @@ const handleClick=()=>{
                 </div>
               </div>
 
-              <div className='group   border-b rounded-none sm:border-2 sm:border-purple-500 px-2 py-1 sm:rounded-md hover:bg-purple-300 hover:border-purple-300 hover:text-white'>
+              <div className='group   border-b rounded-none sm:border-2 sm:border-[#f57d49] px-2 py-1 sm:rounded-md hover:bg-[#f59064] hover:border-[#f59064] hover:text-white'>
                 <div className='cursor-pointer'>Account</div>
                 <div className='group-hover:block hidden text-lg font-normal rounded-md absolute right-3  w-fit z-10 mt-1 py-3 px-3 bg-slate-400 text-white'>
                   <Link to="/change_password">Change Password</Link>

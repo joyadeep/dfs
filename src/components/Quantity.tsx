@@ -54,8 +54,6 @@ const handlePlus=()=>{
 
                     console.log(`quantity after : ${quantity}`);
                     
-                // order.splice(0,1,{userId:1,foodId:food.id,item:food.name,rate:food.rate,price:food.price,quantity:quantity,status:false,time:new Date().toString()})
-                
                 }
 
                 else{
@@ -76,13 +74,13 @@ const handlePlus=()=>{
   return (
     <div className='select-none w-full flex sm:w-auto items-center justify-center space-x-0'>
         <MinusIcon onClick={handleMinus} 
-            className={availableQty!==0?' w-10 h-7 px-1 sm:w-10 bg-green-500 sm:h-10   text-3xl  rounded-md cursor-pointer':'w-10 h-7 px-1 sm:w-10 bg-slate-400 sm:h-10   text-3xl  rounded-md cursor-pointer'} 
+            className={availableQty!==0?' w-10 h-7 px-1 sm:w-8 bg-green-600 sm:h-8   text-3xl  rounded-md cursor-pointer':'w-10 h-7 px-1 sm:w-8 bg-slate-400 sm:h-8   text-3xl  rounded-md cursor-pointer'} 
         />
         <div 
             className={availableQty===0?'text-gray-500 text-sm sm:text-xl  w-7 sm:w-10':'text-white text-sm sm:text-xl  w-7 sm:w-10'}>{quantity}
         </div>
         <PlusIcon onClick={handlePlus} 
-            className={availableQty!==0?'flex w-10 h-7 px-1 sm:w-10 sm:h-10 bg-green-500 text-3xl  rounded-md cursor-pointer':'flex w-10 h-7 px-1 sm:w-10 sm:h-10 bg-slate-400 text-3xl  rounded-md cursor-pointer'} 
+            className={availableQty!==0?'flex w-10 h-7 px-1 sm:w-8 sm:h-8 bg-green-600 text-3xl  rounded-md cursor-pointer':'flex w-10 h-7 px-1 sm:w-8 sm:h-8 bg-slate-400 text-3xl  rounded-md cursor-pointer'} 
         />
 
     </div>

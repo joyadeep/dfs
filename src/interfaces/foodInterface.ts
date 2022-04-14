@@ -24,3 +24,14 @@ export interface order{
 export interface IfilterType{
     type:string;
 }
+
+export interface Iorder{
+    id:number,
+    item:string,
+    rate:number,
+    quantity:number,
+    amount:number,
+    status:string,
+    orderTime:string,
+    maxServeTime:string,
+}

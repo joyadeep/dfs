@@ -5,6 +5,7 @@ import {Navigate} from 'react-router-dom';
 import { food } from '../interfaces/foodInterface';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
+import Orderhistory from '../components/Orderhistory';
 
 
 const Menu:React.FC = () => {
@@ -20,7 +21,7 @@ const Menu:React.FC = () => {
      <MenuList  filterFood={filterFood} />
  </div>
     }
-       
+       <Orderhistory/>
 
     </>
   )

@@ -49,8 +49,8 @@ const Login:React.FC= () => {
 
   return (
     <>
-        <div className='w-full h-screen bg-slate-100 mt-20   flex  justify-center  sm:h-fit sm:mt-5 sm:items-center'>
-
+          
+        <div className='w-full h-screen bg-slate-100 mt-20   flex  justify-center  sm:h-fit sm:mt-5 sm:items-center'> 
             <div className='w-11/12 h-fit bg-white shadow-lg border border-gray-200 px-2 py-5 text-center rounded-lg md:w-1/3  '>
                 <img src='./assets/logo.png' alt='deerwalk foodsystem logo' className=' mx-auto'/>
                 <form onSubmit={submitEvent} className='flex flex-col w-10/12 mx-auto  mt-10 ' >
